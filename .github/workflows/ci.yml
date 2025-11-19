@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ ] #branch here to activate this
+  pull_request:
+    branches: [ ] #
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci 
+
+      - name: Run tests with coverage
+        run: npm test -- --coverage 
+
+
+      - name: Send coverage to Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx coveralls < coverage/lcov.info
