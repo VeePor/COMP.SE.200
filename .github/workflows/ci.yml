@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ ] #branch here to activate this
+    branches: #branch here to activate this
   pull_request:
-    branches: [ ] #
+    branches:
 
 jobs:
   test:
