@@ -1,4 +1,4 @@
-import memoize from "../src/memoize";
+import memoize from "../../src/memoize.js";
 
 describe("memoize", () => {
     const object = { 'a': 1, 'b': 2 };

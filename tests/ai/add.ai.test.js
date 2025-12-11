@@ -1,4 +1,4 @@
-import add from '../src/add.js'; // Adjust the path as necessary to import the 'add' function
+import add from '../../src/add.js'; // Adjust the path as necessary to import the 'add' function
 
 describe('add', () => {
 

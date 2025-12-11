@@ -1,4 +1,4 @@
-import filter from '../src/filter.js'; // Adjust the path as necessary
+import filter from '../../src/filter.js'; // Adjust the path as necessary
 
 describe('filter', () => {
 

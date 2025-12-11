@@ -1,4 +1,4 @@
-import words from "../src/words";
+import words from "../../src/words.js";
 
 describe('words()', () => {
     test('TC1: words("fred, barney, & pebbles") => ["fred", "barney", "pebbles"]', () => {

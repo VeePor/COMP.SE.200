@@ -1,5 +1,5 @@
 
-import memoize from '../src/memoize';
+import memoize from '../../src/memoize.js';
 import { jest } from '@jest/globals';
 
 describe('[AI-assisted] memoize — edge cases, caveats & bug detection', () => {

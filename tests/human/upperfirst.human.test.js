@@ -1,4 +1,4 @@
-import upperFirst from "../src/upperFirst";
+import upperFirst from "../../src/upperFirst.js";
 
 describe("upperFirst", () => {
     test("TC1: upperFirst('hello') => 'Hello'", () => {

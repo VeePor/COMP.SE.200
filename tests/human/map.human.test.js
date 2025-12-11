@@ -8,7 +8,7 @@ negative:
 (["a","b","c"], square)-> NaN
 ([1,2,3,4,5], plus(nonexisted func)) -> NaN
 */
-import map from "../src/map.js";
+import map from "../../src/map.js";
 
 describe("map() — Positive Cases", () => {
 

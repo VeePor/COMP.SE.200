@@ -1,4 +1,4 @@
-import ceil from '../src/ceil.js';
+import ceil from '../../src/ceil.js';
 
 describe('ceil()', () => {
 

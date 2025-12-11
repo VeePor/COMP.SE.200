@@ -27,7 +27,7 @@ string/10 -> Error
 10/string -> Error
 "100"/"100"-> Error
 */
-import divide from "../src/divide.js"
+import divide from "../../src/divide.js"
 
 describe("divide() — Positive Cases", () => {
     test.each([

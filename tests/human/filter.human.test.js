@@ -9,7 +9,7 @@ negative:
 
 ([{ 'user': 'barney', 'active': true },{ 'user': 'fred',   'active': false }], ({money})) ->[] 
 */
-import filter from "../src/filter.js";
+import filter from "../../src/filter.js";
 
 describe("filter() — Positive Cases", () => {
     test("filters users with active === true", () => {

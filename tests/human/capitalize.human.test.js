@@ -17,7 +17,7 @@ _nicolas -> Nicolas
 xxxxxxx-> Xxxxxxx
 */
 
-import capitalize from "../src/capitalize.js";
+import capitalize from "../../src/capitalize.js";
 
 
 describe("capitalize() — Positive Cases", () => {

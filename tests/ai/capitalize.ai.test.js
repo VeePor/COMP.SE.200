@@ -1,4 +1,4 @@
-import capitalize from '../src/capitalize.js'; // Adjust the path as necessary
+import capitalize from '../../src/capitalize.js'; // Adjust the path as necessary
 
 describe('capitalize', () => {
 

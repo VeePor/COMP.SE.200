@@ -1,5 +1,5 @@
 import { jest, describe, test, expect } from '@jest/globals';
-import map from '../src/map.js'; // Adjust the path as necessary
+import map from '../../src/map.js'; // Adjust the path as necessary
 
 describe('map', () => {
 

@@ -1,4 +1,4 @@
-import divide from '../src/divide.js'; // Adjust the path as necessary to import the 'divide' function
+import divide from '../../src/divide.js'; // Adjust the path as necessary to import the 'divide' function
 
 // NOTE: This test suite assumes the implementation is corrected to:
 // createMathOperation((dividend, divisor) => dividend / divisor, 1)

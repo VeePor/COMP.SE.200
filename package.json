@@ -6,8 +6,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+
+    "test:human": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPatterns=tests/human",
+    "test:ai": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPatterns=tests/ai",
+
+    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "coverage:human": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPatterns=tests/human",
+    "coverage:ai": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPatterns=tests/ai"
   },
   "repository": {
     "type": "git",

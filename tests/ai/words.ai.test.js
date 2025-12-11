@@ -1,5 +1,5 @@
 // words.test.js
-import words from "../src/words";
+import words from "../../src/words.js";
 
 describe('words()', () => {
 

@@ -1,5 +1,5 @@
 // upperFirst.test.js
-import upperFirst from '../src/upperFirst.js';
+import upperFirst from '../../src/upperFirst.js';
 
 describe('upperFirst()', () => {
 
