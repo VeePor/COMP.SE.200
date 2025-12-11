@@ -1,4 +1,3 @@
-
 name: CI
 
 on:
@@ -24,17 +23,65 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with coverage
-        run: |
-          npm run coverage
-          # Ensure LCOV exists (debug)
-          test -f coverage/lcov.info && echo "lcov.info present" || (echo "lcov.info missing" && exit 1)
-        # continue-on-error: true 
 
-      - name: Upload coverage to Coveralls
+      # ---------------------------
+      # 1) FULL COVERAGE REPORT
+      # ---------------------------
+      - name: Run full coverage
+        run: npm run coverage
+
+      - name: Upload full coverage to Coveralls (parallel)
         if: always()
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov.info
+          flag-name: "full"
+          parallel: true
+          debug: true
+
+
+      # ---------------------------
+      # 2) HUMAN COVERAGE REPORT
+      # ---------------------------
+      - name: Run human-only coverage
+        run: npm run coverage:human
+
+      - name: Upload human-only coverage to Coveralls (parallel)
+        if: always()
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
+          flag-name: "human"
+          parallel: true
+          debug: true
+
+
+      # ---------------------------
+      # 3) AI COVERAGE REPORT
+      # ---------------------------
+      - name: Run AI-only coverage
+        run: npm run coverage:ai
+
+      - name: Upload AI-only coverage to Coveralls (parallel)
+        if: always()
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
+          flag-name: "ai"
+          parallel: true
+          debug: true
+
+
+      # ---------------------------
+      # FINALIZE PARALLEL BUILDS
+      # ---------------------------
+      - name: Coveralls finished (final step)
+        if: always()
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
           debug: true

@@ -1,0 +1,277 @@
+<html><head><meta charset="utf-8"/><title>Test Report</title><style type="text/css">:root {
+  --text-primary: #111;
+  --text-secondary: #4f4f4f;
+  --success: #006633;
+  --success-bright: #80ffbf;
+  --danger: #cc071e;
+  --danger-bright: #fbdfe0;
+  --warning: #995c00;
+  --warning-bright: #ffeea8;
+  --panel: #eee;
+  --border: #949494;
+  --disabled: #6b6b6b;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+}
+body {
+  padding: 2rem 1rem;
+}
+.jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+#metadata-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.additional-information-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/** SUMMARY */
+#summary {
+  color: var(--text-primary);
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 0.5rem;
+  background: var(--panel);
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: var(--success);
+  border-left: 0.4rem solid var(--success);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: var(--danger);
+  border-left: 0.4rem solid var(--danger);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-pending {
+  color: var(--warning);
+  border-left: 0.4rem solid var(--warning);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-empty {
+  color: var(--disabled);
+  border-left: 0.4rem solid var(--disabled);
+  margin-bottom: 0.15rem;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: var(--success-bright);
+  color: var(--success);
+}
+.test-result.failed {
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.test-result.pending {
+  background-color: var(--warning-bright);
+  color: var(--warning);
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--danger);
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 1rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: var(--panel);
+  color: var(--text-secondary);
+  border: 0.15rem solid;
+  border-color: var(--panel);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info:hover {
+  border-color: var(--border);
+  cursor: pointer;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 1rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.85rem;
+}
+.suite-info .suite-time.warn {
+  background-color: var(--danger);
+  color: #fff;
+}
+.suite-info:before {
+  content: "\2303";
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg) translateY(0.15rem);
+}
+.suite-container[open] .suite-info:before {
+  transform: rotate(0deg) translateY(0.15rem);
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--panel);
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><main class="jesthtml-content"><header><h1 id="title">Test Report</h1></header><section id="metadata-container"><div id="timestamp">Started: 2025-12-11 17:36:48</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (10)</div><div class="summary-passed ">7 passed</div><div class="summary-failed ">3 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (117)</div><div class="summary-passed ">100 passed</div><div class="summary-failed ">17 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/map.ai.test.js</div><div class="suite-time">1.174s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should return a new array with values transformed by the iteratee</div><div class="test-status">passed</div><div class="test-duration">0.016s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should transform an array of strings</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should transform an array of objects</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should handle the iteratee returning null or undefined</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should invoke the iteratee with (value, index, array)</div><div class="test-status">passed</div><div class="test-duration">0.007s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should return an empty array for an empty array input</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should return an empty array when the input is null</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should return an empty array when the input is undefined</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">map</div><div class="test-title">should not mutate the original array</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/memoize.ai.test.js</div><div class="suite-time">1.234s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">caches by first arg only by default — `this` changes are ignored (stale results)</div><div class="test-status">passed</div><div class="test-duration">0.015s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">using a resolver that includes `this` avoids stale results for context-dependent functions</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">resolver errors propagate and prevent func invocation</div><div class="test-status">passed</div><div class="test-duration">0.042s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">custom cache: WeakMap works for object keys and throws for primitive keys</div><div class="test-status">passed</div><div class="test-duration">0.008s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">custom cache: absence of clear() in WeakMap does not break memoize</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">NaN keys: Map treats NaN as equal — only computes once</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">distinct object identities are distinct keys (no structural memoization)</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">cache instance remains stable after set operations</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">caches undefined and null distinctly under different keys</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">[AI-assisted] memoize — edge cases, caveats &amp; bug detection</div><div class="test-title">manual cache override is respected on subsequent calls</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/words.ai.test.js</div><div class="suite-time">1.26s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">splits simple ASCII words</div><div class="test-status">passed</div><div class="test-duration">0.017s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">extracts ASCII alphanumeric sequences (but splits letters and numbers)</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">removes punctuation automatically</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">supports custom regex pattern</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">custom pattern overrides default behavior completely</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">splits words with Unicode letters</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">splits emoji as separate words</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">handles CJK characters</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">handles mixed ASCII and Unicode</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">returns empty array for empty string</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">returns empty array for strings with no word characters</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">returns empty array for whitespace-only string</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">throws TypeError for non-string primitive inputs</div><div class="test-status">passed</div><div class="test-duration">0.044s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">throws TypeError for null or undefined</div><div class="test-status">passed</div><div class="test-duration">0.006s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">splits alphabetic and numeric boundaries separately</div><div class="test-status">passed</div><div class="test-duration">0.006s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">words()</div><div class="test-title">handles long repeated ASCII strings</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div></div></details><details id="suite-4" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/divide.ai.test.js</div><div class="suite-time">1.316s</div></summary><div class="suite-tests"><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should correctly divide two positive integers</div><div class="test-status">failed</div><div class="test-duration">0.022s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should handle negative numbers in the dividend</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should handle negative numbers in the divisor</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should handle two negative numbers</div><div class="test-status">failed</div><div class="test-duration">0.004s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should handle floating-point numbers</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should return 0 when the dividend is 0 and the divisor is non-zero</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should return Infinity when dividing a positive number by 0</div><div class="test-status">failed</div><div class="test-duration">0.002s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should return -Infinity when dividing a negative number by 0</div><div class="test-status">failed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should return NaN when dividing 0 by 0</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should default undefined arguments to 1 (based on the default value in createMathOperation)</div><div class="test-status">failed</div><div class="test-duration">0.005s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should handle string arguments that can be coerced to numbers</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">divide</div><div class="test-title">should return NaN for non-numeric string arguments</div><div class="test-status">failed</div><div class="test-duration">0.003s</div></div></div></div></details><details id="suite-5" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/add.ai.test.js</div><div class="suite-time">1.348s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should correctly add two positive integers</div><div class="test-status">passed</div><div class="test-duration">0.01s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should correctly add a positive and a negative integer</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should correctly add two negative integers</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should handle floating-point numbers</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should handle zero correctly</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should default undefined arguments to 0</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should default null arguments to 0 (based on Lodash default behavior)</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should handle string arguments that can be coerced to numbers</div><div class="test-status">failed</div><div class="test-duration">0.008s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">add</div><div class="test-title">should return NaN if arguments are non-numeric strings</div><div class="test-status">failed</div><div class="test-duration">0.004s</div></div></div></div></details><details id="suite-6" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/filter.ai.test.js</div><div class="suite-time">1.31s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should return objects where the predicate returns truthy</div><div class="test-status">passed</div><div class="test-duration">0.017s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should return an empty array if no elements match the predicate</div><div class="test-status">failed</div><div class="test-duration">0.014s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should return all elements if the predicate always returns true</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should filter a simple array of numbers</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should correctly use the index argument in the predicate</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should correctly use the array argument in the predicate</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should handle a null array by returning an empty array</div><div class="test-status">failed</div><div class="test-duration">0.002s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should handle an undefined array by returning an empty array</div><div class="test-status">failed</div><div class="test-duration">0.009s</div></div></div><div class="test-result failed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should handle an empty array</div><div class="test-status">failed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">filter</div><div class="test-title">should not mutate the original array</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div></div></details><details id="suite-7" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/ceil.ai.test.js</div><div class="suite-time">1.443s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">rounds up to the nearest integer by default</div><div class="test-status">passed</div><div class="test-duration">0.018s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">handles negative numbers</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">rounds up with positive precision</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">does not produce floating-point artifacts (critical)</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">rounds up with negative precision (to tens, hundreds, ...)</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">returns NaN for non-numeric input</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">handles precision values that are not numbers</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">precision of 0 is equivalent to default behavior</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">handles extremely large numbers</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">handles extremely small numbers</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">correctly handles exact boundaries</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">behaves consistently with Math.ceil for precision 0</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">ceil()</div><div class="test-title">property: result is always &gt;= the input number</div><div class="test-status">passed</div><div class="test-duration">0.237s</div></div></div></div></details><details id="suite-8" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/upperfirst.ai.test.js</div><div class="suite-time">0.334s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">converts the first character to upper case</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">leaves first character unchanged if it is already uppercase</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">returns empty string for empty input</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">handles one-character strings</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">leaves non-alphabetic first characters unchanged</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">uppercases Unicode letters correctly</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">does not break emoji or symbols</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">treats null or undefined as empty string</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">keeps the rest of the string unchanged</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">upperFirst()</div><div class="test-title">uppercases first non-empty character when string starts with whitespace</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div></div></details><details id="suite-9" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/capitalize.ai.test.js</div><div class="suite-time">0.292s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should capitalize an all-uppercase string</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should capitalize an all-lowercase string</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should correctly capitalize a mixed-case string</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should handle single character strings</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should handle a string starting with a number</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should handle a string starting with a symbol</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should return an empty string when given an empty string</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should return an empty string when the argument is null (due to toString)</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should return a capitalized string when given undefined (due to toString)</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should handle other non-string inputs (numbers) due to toString</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">capitalize</div><div class="test-title">should handle other non-string inputs (arrays) due to toString</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></details><details id="suite-10" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/nicolas/COMP.SE.200/tests/ai/tonumber.ai.test.js</div><div class="suite-time">0.343s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">returns the number itself when value is a number</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">returns Infinity when given Infinity</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts numeric strings to numbers</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">trims whitespace from string before converting</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">parses binary string values ("0b...")</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">parses octal string values ("0o...")</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">returns NaN for bad signed hex values</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">parses valid hex using unary +</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">returns NaN for symbols</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">uses valueOf() on objects that implement it</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">stringifies object if valueOf returns another object</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">numeric conversion of regular objects without valueOf</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts null to 0</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts undefined to NaN</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts true to 1 and false to 0</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts empty string to 0</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">toNumber()</div><div class="test-title">converts "   " to 0 after trimming</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></details></main></body></html>
