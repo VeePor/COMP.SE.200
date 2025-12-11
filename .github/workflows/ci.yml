@@ -1,35 +1,39 @@
+
 name: CI
 
 on:
   push:
-    branches: #branch here to activate this
+    branches: ['main', '**']   # Runs on main and all branches
   pull_request:
-    branches:
+    branches: ['**']
 
 jobs:
-  test:
+  test-coveralls:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v4
         with:
-          node-version: '18'  
+          node-version: '14'
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci 
+        run: npm ci
 
       - name: Run tests with coverage
-        run: npm test -- --coverage 
-
-
-      - name: Send coverage to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx coveralls < coverage/lcov.info
+          npx jest --coverage \
+            --coverageReporters=text \
+            --coverageReporters=lcov \
+            --collectCoverageFrom="src/**/*.js" \
+            --collectCoverageFrom="!src/.internal/**"
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
