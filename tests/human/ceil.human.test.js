@@ -1,6 +1,7 @@
 import ceil from '../../src/ceil.js';
 
-describe('ceil()', () => {
+// Tests designed in part 1
+describe('[DESIGNED IN PART 1] ceil()', () => {
   test('TC1: ceil(4.006) => 5', () => {
     expect(ceil(4.006)).toBe(5);
   });
