@@ -3,7 +3,7 @@ name: CI
 
 on:
   push:
-    branches: ['main', '**']   # Runs on main and all branches
+    branches: ['main', '**']
   pull_request:
     branches: ['**']
 
@@ -26,14 +26,13 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          npx jest --coverage \
-            --coverageReporters=text \
-            --coverageReporters=lcov \
-            --collectCoverageFrom="src/**/*.js" \
-            --collectCoverageFrom="!src/.internal/**"
+          npm run coverage
+          # Ensure LCOV exists (debug)
+          test -f coverage/lcov.info && echo "lcov.info present" || (echo "lcov.info missing" && exit 1)
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov.info
+          debug: true
