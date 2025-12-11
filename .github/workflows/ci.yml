@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -29,9 +29,10 @@ jobs:
           npm run coverage
           # Ensure LCOV exists (debug)
           test -f coverage/lcov.info && echo "lcov.info present" || (echo "lcov.info missing" && exit 1)
-        continue-on-error: true 
+        # continue-on-error: true 
 
       - name: Upload coverage to Coveralls
+        if: always()
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
