@@ -1,25 +1,42 @@
-import words from "../../src/words.js";
+import words from '../../src/words.js';
 
 describe('words()', () => {
-    test('TC1: words("fred, barney, & pebbles") => ["fred", "barney", "pebbles"]', () => {
-        expect(words("fred, barney, & pebbles")).toEqual(["fred", "barney", "pebbles"]);
-    });
-    test('TC2: words("fred, barney, & pebbles", /[^, ]+/g) => ["fred", "barney", "&", "pebbles"]', () => {
-        expect(words("fred, barney, & pebbles", /[^, ]+/g)).toEqual(["fred", "barney", "&", "pebbles"]);
-    });
-    test('TC3: words("hello world") => ["hello", "world"]', () => {
-        expect(words("hello world")).toEqual(["hello", "world"]);
-    });
-    test('TC4: words("hello, world!", /[^, ]+/g) => ["hello", "world!"]', () => {
-        expect(words("hello, world!", /[^, ]+/g)).toEqual(["hello", "world!"]);
-    });
-    test('TC5: words("123 abc 456") => ["123", "abc", "456"]', () => {
-        expect(words("123 abc 456")).toEqual(["123", "abc", "456"]);
-    });
-    test('TC6: words("!@# $%^ &*()") => []', () => {
-        expect(words("!@# $%^ &*()")).toEqual([]);
-    });
-    test('TC7: words("") => []', () => {
-        expect(words("")).toEqual([]);
-    });
+  test('should split a comma-separated list into alphabetic words', () => {
+    expect(words('fred, barney, & pebbles')).toEqual(['fred', 'barney', 'pebbles']);
+  });
+
+  test('should split a simple sentence into words', () => {
+    expect(words('hello world')).toEqual(['hello', 'world']);
+  });
+
+  test('should split mixed alphanumeric tokens', () => {
+    expect(words('ABCd12 and 34aB')).toEqual(['ABCd12', 'and', '34aB']);
+  });
+
+  test('should ignore punctuation-only strings and return empty array', () => {
+    expect(words('!@# $%^ &*()')).toEqual([]);
+  });
+
+  test('should return empty array for empty string', () => {
+    expect(words('')).toEqual([]);
+  });
+
+  test('should handle multiple spaces, tabs and newlines', () => {
+    expect(words('  hello\tworld \n next '))
+      .toEqual(['hello', 'world', 'next']);
+  });
+
+  test('should honor a custom pattern that includes non-alphanumeric tokens', () => {
+    expect(words('fred, barney, & pebbles', /[^, ]+/g))
+      .toEqual(['fred', 'barney', '&', 'pebbles']);
+  });
+
+  test('should honor a custom pattern to capture only comma-separated items', () => {
+    expect(words('hello, world!', /[^, ]+/g)).toEqual(['hello', 'world!']);
+  });
+
+  test('should split basic unicode words with accents', () => {
+    expect(words('mañana Überstraße'))
+      .toEqual(['mañana', 'Überstraße']);
+  });
 });

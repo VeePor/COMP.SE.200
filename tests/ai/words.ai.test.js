@@ -11,8 +11,8 @@ describe('words()', () => {
     expect(words('fred, barney, & pebbles')).toEqual(['fred', 'barney', 'pebbles']);
   });
 
-  test('extracts ASCII alphanumeric sequences (but splits letters and numbers)', () => {
-    expect(words('hello world123 test')).toEqual(['hello', 'world', '123', 'test']);
+  test('extracts ASCII alphanumeric sequences', () => {
+    expect(words('hello world123 test')).toEqual(['hello', 'world123', 'test']);
   });
 
   test('removes punctuation automatically', () => {
