@@ -77,7 +77,7 @@ describe('upperFirst()', () => {
   // ---------------------------------------------------------------------------
 
   test('uppercases first non-empty character when string starts with whitespace', () => {
-    expect(upperFirst('   hello')).toBe('   hello'); 
+    expect(upperFirst('   hello')).toBe('   Hello'); 
     // The first *character* is a space, not h
   });
 
