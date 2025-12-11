@@ -1,6 +1,7 @@
+// These test cases were designed in the test plan part 1 of the project
 import add from "../../src/add.js";
 
-describe("Valid additions", () => {
+describe("[PLANNED IN PART 1] Valid additions", () => {
     test.each([
         [0, 0, 0],
         [10000000, 100000000, 110000000],
@@ -17,7 +18,8 @@ describe("Valid additions", () => {
     });
 });
 
-describe("Invalid additions (should throw)", () => {
+// These test cases were designed in the test plan part 1 of the project
+describe("[PLANNED IN PART 1] Invalid additions (should throw)", () => {
     test.each([
         [1, -1],
         ["3", "4"],
