@@ -9,8 +9,8 @@
     "test:human": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/human",
     "test:ai": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/ai",
     "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
-    "coverage:human": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPatterns=tests/human",
-    "coverage:ai": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPatterns=tests/ai"
+    "coverage:human": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPattern=tests/human",
+    "coverage:ai": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testPathPattern=tests/ai"
   },
   "repository": {
     "type": "git",
