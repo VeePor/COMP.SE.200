@@ -1,0 +1,1 @@
+[![Coverage Status](https://coveralls.io/repos/github/VeePor/COMP.SE.200/badge.svg)](https://coveralls.io/github/VeePor/COMP.SE.200)
